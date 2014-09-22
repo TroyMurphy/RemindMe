@@ -1,0 +1,137 @@
+Assignment 1
+
+Learning Objectives
+
+Solve a problem by constructing a simple interactive application using Android and Java.
+Document an object-oriented design in Unified Modeling Language.
+
+Problem Description
+
+You are to design and implement a simple, attractive, and easy-to-use TODO list application. 
+It should be able to record TODO items, and allow you check that items are done, and archive items you don't want to see anymore.
+ Furthermore you should be able to browse visible and archived TODO options. Your app will allow:
+
+Adding or removing of TODO items (text provided by the user)
+Checking TODO items off ( [  ] TODO: Get Kale -> [X] TODO: Get Kale )
+Selecting and archiving TODO items
+Browsing visible and archived TODO items
+Emailing via an intent selected TODO items (including archived options)
+Ability to email ALL TODO items.
+Your application must be persistent: if I exit the app it must remember everything that I did. If the app has to shutdown, it must have already saved my counters and counts.
+The application allows the user to:
+
+view TODO Items
+Check TODO items
+Un-check TODO items
+Archive TODO Items
+Unarchive TODO items
+view archived TODO items
+Email TODO items
+Email a selection of TODO Items
+Email all TODO items including archived.
+remove a TODO item
+remove an archived TODO item
+Summarize
+total number of TODO items checked
+total number of TODO items left unchecked
+total number of archived TODO items
+total number of checked archived TODO items
+total number of unchecked archived TODO items
+always save and load the TODO items automatically for the user
+Naturally, the counts should be updated if number of TODO items change.
+
+The application should assist the user in proper and consistent data entry.
+
+Deliverables
+
+Code Base: (6 marks)
+Your complete source code, implementing the working application and its user interface, will be built and inspected by the TA. Each class must contain comments describing its purpose, design rationale, and any outstanding issues.
+
+System Documentation: (2 marks)
+As image file(s), describe the structure of your object-oriented design using UML class diagram(s). Focus on the most important classes that you designed and implemented. Add notes to describe the main responsibilities of these classes.
+
+Hints
+
+This is a description of the core functionality. Often, problem statements from users lack details. As you are prototyping a design, you may uncover other behaviors that have not been specified, but make sense in the context and intent of the application. For example, think about how someone might effectively use your application. It is up to you to decide what functions your design will need, based on the given problem description and valid assumptions, in discussion with your users (the TAs and instructor). You should consider asking the customer (the instructor) what they want to see.
+
+While you may discuss your design with other students, the code (user interface and internal implementation) should be your own work. Source code from publicly available sources may be used within reason. In particular, at least 50% of the application code should be yours. Give proper credit to the original developers in the source code and in the system documentation.
+
+The TAs will be inspecting your code, so "major" commented-out experiments should be cleaned up so that the code is readable.
+
+For neatness and readability, diagrams should be created or drawn using a computer. UML models may be developed using the eUML2 tool or any other tool (or drawn (make it pretty)).
+
+Besides addressing the problem correctly, your software design will be evaluated on its proper use of object-oriented design concepts and your user interface design will be evaluated on its graphic layout and ease of use.
+
+Marks may be deducted if the TA encounters problems in building and/or running your application on the CSC 159 lab machines.
+
+Your application should show up as your ccid-notes for instance my app would be called hindle1-notes.
+
+Submission Procedure
+
+On Eclass/Moodle post a URL to your github git repository for your assignment. It should be the git URL such that the marker can go:
+
+git clone http://github.com/yourusernameatgithub/yourassignment1.git
+
+Your eclass/moodle submission should be formatted like this:
+
+http://github.com/yourusernameatgithub/yourassignment1.git
+And get a copy of your assignment1 + a commited, pushed and compiled apk file IN THE GIT REPO.
+
+Push to github by the deadline. Please make sure all the required files are included. The TA will test your application from the submitted code and binary. The required directory and file structure for your files must include:
+
+as1/
+as1/doc/
+as1/src/
+as1/bin/ <-- this contains a compiled apk file
+So basically zipping your eclipse android's project dir will probably be ok e.g.:
+as1
+├── bin
+│   ├── classes
+│   │   └── es
+│   │       └── softwareprocess
+│   │           └── fillercreep
+│   └── res
+│       ├── drawable-hdpi
+│       ├── drawable-ldpi
+│       └── drawable-mdpi
+├── gen
+│   └── es
+│       └── softwareprocess
+│           └── fillercreep
+├── res
+│   ├── drawable-hdpi
+│   ├── drawable-ldpi
+│   ├── drawable-mdpi
+│   ├── layout
+│   └── values
+└── src
+    └── es
+        └── softwareprocess
+            └── fillercreep
+Your code base should appear in the as1/src/ subdirectory, and your system documentation should appear in the as1/doc/ directory. Essentially your eclipse workspace directory for this project should be enough. We must be able to compile it.
+
+It does not have to be called as1.
+
+Immediate mark loss:
+
+If you hand in an assignment that matches any of these patterns I may take off an extra mark or two:
+
+[ ] More than 1 APK file in the bin directory
+
+[ ] Application name in the launcher is not prefixed by your CCID
+
+[ ] No README file
+
+[ ] UML not in the doc directory
+
+[ ] Use of SQLite for storing notes -- RDBMS are good tools, but we're focusing on OO right now, so please refrain from using SQLite.
+These are brown M&M rules.
+
+Notes
+
+I have to really emphasize this: do not skimp on the UML in the system documentation. It is probably one of the first things you should do, that's an easy 2 marks.
+
+Please tell me the name of your application, if you give me more than 1 apk file I won't know which one to evaluate.
+
+Please only provide only one entry from the menu into your application.
+
