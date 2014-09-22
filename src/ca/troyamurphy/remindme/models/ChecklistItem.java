@@ -5,6 +5,11 @@ public class ChecklistItem {
 	public String name;
 	public Boolean checked;
 	
+	public ChecklistItem(String theName) {
+		this.name = theName;
+		this.checked = false;
+	}
+	
 	public String getName() {
 		return name;
 	}

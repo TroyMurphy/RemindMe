@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class StandardChecklist {
 	//singleton design pattern uses INSTANCE as the singleton.
-	//create with StandardChecklist standardChecklist = StandardChecklist.getInstance();
+	//access with StandardChecklist.getInstance() any time the checklist is required;
 	
 	private static StandardChecklist INSTANCE = null;
 	
@@ -27,5 +27,9 @@ public class StandardChecklist {
 	}
 	public ArrayList<ChecklistItem> getStandardList() {
 		return INSTANCE.standardArray;
+	}
+	
+	public ChecklistItem getChecklistItemAtIndex(int index) {
+		return standardArray.get(index);
 	}
 }

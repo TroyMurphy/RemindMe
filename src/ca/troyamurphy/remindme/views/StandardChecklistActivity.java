@@ -4,16 +4,27 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import ca.troyamurphy.remindme.R;
+import ca.troyamurphy.remindme.models.ChecklistItem;
+import ca.troyamurphy.remindme.models.StandardArrayAdapter;
+import ca.troyamurphy.remindme.models.StandardChecklist;
 
 public class StandardChecklistActivity extends Activity {
 
+	private StandardArrayAdapter standardAdapter;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_standard_checklist);
 		
-		//populateListView();
+		populateStandardList();
+		
+		populateStandardListView();
+		registerStandardClickCallback();
 	}
 
 	@Override
@@ -35,7 +46,32 @@ public class StandardChecklistActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	private void populateListView() {
+	private void populateStandardList() {
+		// Will be replaced by add and remove buttons
+		ChecklistItem theChecklistItem = new ChecklistItem("First Item");
+		StandardChecklist.getInstance().addChecklistItem(theChecklistItem);
+		ChecklistItem theSecondChecklistItem = new ChecklistItem("Second Item");
+		StandardChecklist.getInstance().addChecklistItem(theSecondChecklistItem);
+	}
+	
+	private void populateStandardListView() {
+		this.standardAdapter = new StandardArrayAdapter(this);
 		
+		ListView standardList = (ListView) findViewById(R.id.standardListView);
+		standardList.setAdapter(this.standardAdapter);
+	}
+	
+	private void registerStandardClickCallback() {
+		ListView listview = (ListView) findViewById(R.id.standardListView); 
+				
+		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				ChecklistItem selectedChecklistItem = StandardChecklist.getInstance().getChecklistItemAtIndex(position);
+				selectedChecklistItem.toggleChecked();
+			}
+		
+		});
 	}
 }
