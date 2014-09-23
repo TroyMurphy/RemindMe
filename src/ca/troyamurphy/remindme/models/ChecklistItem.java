@@ -1,7 +1,9 @@
 package ca.troyamurphy.remindme.models;
 
-public class ChecklistItem {
-	//implements Serializable
+import java.io.Serializable;
+
+public class ChecklistItem implements Serializable {
+	private static final long serialVersionUID = 1L;
 	public String name;
 	public Boolean checked;
 	

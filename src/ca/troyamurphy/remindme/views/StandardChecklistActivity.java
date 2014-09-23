@@ -45,18 +45,15 @@ public class StandardChecklistActivity extends Activity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
+		//if (id == R.id.action_settings) {
+		//	return true;
+		//}
 		return super.onOptionsItemSelected(item);
 	}
 	
 	private void populateStandardList() {
 		// Will be replaced by add and remove buttons
-		ChecklistItem theChecklistItem = new ChecklistItem("First Item");
-		StandardChecklist.getInstance().addChecklistItem(theChecklistItem);
-		ChecklistItem theSecondChecklistItem = new ChecklistItem("Second Item");
-		StandardChecklist.getInstance().addChecklistItem(theSecondChecklistItem);
+		// Can be used to force creation of new counter on Startup.
 	}
 	
 	private void populateStandardListView() {
@@ -73,7 +70,7 @@ public class StandardChecklistActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				ChecklistItem selectedChecklistItem = StandardChecklist.getInstance().getChecklistItemAtIndex(position);
+				ChecklistItem selectedChecklistItem = StandardChecklist.getInstance(StandardChecklistActivity.this.getApplicationContext()).getChecklistItemAtIndex(position);
 				selectedChecklistItem.toggleChecked();
 			}
 		
@@ -98,7 +95,7 @@ public class StandardChecklistActivity extends Activity {
 						toast.show();
 					} else {
 						ChecklistItem newChecklistItem = new ChecklistItem(checklistItemString); 
-						StandardChecklist.getInstance().addChecklistItem(newChecklistItem);
+						StandardChecklist.getInstance(getApplicationContext()).addChecklistItem(newChecklistItem);
 						
 						refreshList();
 					}
