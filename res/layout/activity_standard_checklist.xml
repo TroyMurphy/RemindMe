@@ -9,7 +9,7 @@
     tools:context="ca.troyamurphy.remindme.StandardChecklistActivity" >
 
     <TextView
-        android:id="@+id/standard_item_name"
+        android:id="@+id/standard_list_view_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Standard Checklist" />
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/standard_item_name" >
+        android:layout_below="@+id/standard_list_view_title" >
     </ListView>
 
 </RelativeLayout>

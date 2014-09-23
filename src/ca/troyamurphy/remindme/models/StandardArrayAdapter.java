@@ -1,6 +1,8 @@
 package ca.troyamurphy.remindme.models;
 
 import android.content.Context;
+import android.graphics.Paint;
+import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -33,7 +35,12 @@ public class StandardArrayAdapter extends ArrayAdapter<ChecklistItem> {
 		
 		TextView titleTV = (TextView) itemView.findViewById(R.id.standard_item_name);
 		titleTV.setText(selectedChecklistItem.getName());
-		
+		if (selectedChecklistItem.getChecked()) {
+			titleTV.setPaintFlags(titleTV.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+		} else {
+			titleTV.setPaintFlags(0);
+		}
+				
 		CheckBox checkedCB = (CheckBox) itemView.findViewById(R.id.standard_item_checked);
 		checkedCB.setChecked(selectedChecklistItem.getChecked());
 

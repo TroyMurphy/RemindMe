@@ -3,7 +3,9 @@ package ca.troyamurphy.remindme.views;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import ca.troyamurphy.remindme.R;
 import ca.troyamurphy.remindme.models.ChecklistItem;
@@ -45,7 +48,7 @@ public class StandardChecklistActivity extends Activity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
+		//int id = item.getItemId();
 		//if (id == R.id.action_settings) {
 		//	return true;
 		//}
@@ -77,23 +80,22 @@ public class StandardChecklistActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				String message1 = "ITEM " + position + "clicked. It was " +
-					StandardChecklist.getInstance(getApplicationContext()).getChecklistItemAtIndex(position).getChecked().toString();
+				//call on checklist so that it saves
+				StandardChecklist.getInstance(getApplicationContext()).toggleChecklistItemAtIndex(position);
 				
-				Boolean afterToggle = StandardChecklist.getInstance(getApplicationContext()).toggleChecklistItemAtIndex(position);
+				ChecklistItem selectedChecklistItem = StandardChecklist.getInstance(getApplicationContext()).getChecklistItemAtIndex(position);
 				
-				String message2 = "ITEM " + position + " clicked. It is " +
-					StandardChecklist.getInstance(getApplicationContext()).getChecklistItemAtIndex(position).getChecked().toString();
-								
 				CheckBox checkbox = (CheckBox) findViewById(R.id.standard_item_checked);
-				checkbox.setChecked(afterToggle);
+				checkbox.setChecked(selectedChecklistItem.getChecked());
 				
-				Toast.makeText(getApplicationContext(), message1, Toast.LENGTH_SHORT).show();
-				Toast.makeText(getApplicationContext(), message2, Toast.LENGTH_SHORT).show();
+				TextView titleTV = (TextView) findViewById(R.id.standard_item_name);
+				if (selectedChecklistItem.getChecked()) {
+					titleTV.setPaintFlags(titleTV.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+				} else {
+					titleTV.setPaintFlags(0);
+				}
 			}
-		
 		});
-		refreshList();
 	}
 	public boolean addChecklistItemAction(MenuItem menuItem) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
