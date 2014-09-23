@@ -1,12 +1,17 @@
 package ca.troyamurphy.remindme.views;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 import ca.troyamurphy.remindme.R;
 import ca.troyamurphy.remindme.models.ChecklistItem;
 import ca.troyamurphy.remindme.models.StandardArrayAdapter;
@@ -73,5 +78,37 @@ public class StandardChecklistActivity extends Activity {
 			}
 		
 		});
+	}
+	public boolean addChecklistItemAction(MenuItem menuItem) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		
+		LayoutInflater inflater = this.getLayoutInflater();
+		
+		builder.setView(inflater.inflate(R.layout.action_new_checklist_item, null))
+			.setNegativeButton("Cancel", null)
+			.setPositiveButton("Add Item", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int id) {
+					EditText editText = (EditText) ((AlertDialog) dialog).findViewById(R.id.addChecklistItemEditText);
+					String checklistItemString = editText.getText().toString();
+					
+					if (checklistItemString.length() <= 0) {
+						Toast toast = Toast.makeText(getApplicationContext(), "Task cannot be empty", Toast.LENGTH_SHORT);
+						toast.show();
+					} else {
+						ChecklistItem newChecklistItem = new ChecklistItem(checklistItemString); 
+						StandardChecklist.getInstance().addChecklistItem(newChecklistItem);
+						
+						refreshList();
+					}
+				}
+			});
+		AlertDialog dialog = builder.create();
+		dialog.show();
+		return true;
+	}
+	private void refreshList() {
+		this.standardAdapter.notifyDataSetChanged();
 	}
 }
