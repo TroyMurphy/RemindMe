@@ -50,13 +50,19 @@ public class StandardChecklist {
 	}
 	
 	public ChecklistItem getChecklistItemAtIndex(int index) {
-		return standardArray.get(index);
+		return INSTANCE.standardArray.get(index);
 	}
+	public Boolean toggleChecklistItemAtIndex(Integer index) {
+		INSTANCE.standardArray.get(index).toggleChecked();
+		INSTANCE.save();
+		return INSTANCE.standardArray.get(index).getChecked();
+	}
+	
 	private void save() {
 		try {
 			FileOutputStream fileOut = context.openFileOutput(StandardChecklist.DATABASEFILE, Context.MODE_PRIVATE);
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(this.standardArray);
+			out.writeObject(INSTANCE.standardArray);
 			out.close();
 			fileOut.close();
 		} catch (FileNotFoundException e) {

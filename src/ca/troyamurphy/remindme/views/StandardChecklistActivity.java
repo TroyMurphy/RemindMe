@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -51,6 +52,12 @@ public class StandardChecklistActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		this.refreshList();
+	}
+	
 	private void populateStandardList() {
 		// Will be replaced by add and remove buttons
 		// Can be used to force creation of new counter on Startup.
@@ -70,11 +77,23 @@ public class StandardChecklistActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				ChecklistItem selectedChecklistItem = StandardChecklist.getInstance(StandardChecklistActivity.this.getApplicationContext()).getChecklistItemAtIndex(position);
-				selectedChecklistItem.toggleChecked();
+				String message1 = "ITEM " + position + "clicked. It was " +
+					StandardChecklist.getInstance(getApplicationContext()).getChecklistItemAtIndex(position).getChecked().toString();
+				
+				Boolean afterToggle = StandardChecklist.getInstance(getApplicationContext()).toggleChecklistItemAtIndex(position);
+				
+				String message2 = "ITEM " + position + " clicked. It is " +
+					StandardChecklist.getInstance(getApplicationContext()).getChecklistItemAtIndex(position).getChecked().toString();
+								
+				CheckBox checkbox = (CheckBox) findViewById(R.id.standard_item_checked);
+				checkbox.setChecked(afterToggle);
+				
+				Toast.makeText(getApplicationContext(), message1, Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), message2, Toast.LENGTH_SHORT).show();
 			}
 		
 		});
+		refreshList();
 	}
 	public boolean addChecklistItemAction(MenuItem menuItem) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -94,7 +113,7 @@ public class StandardChecklistActivity extends Activity {
 						Toast toast = Toast.makeText(getApplicationContext(), "Task cannot be empty", Toast.LENGTH_SHORT);
 						toast.show();
 					} else {
-						ChecklistItem newChecklistItem = new ChecklistItem(checklistItemString); 
+						ChecklistItem newChecklistItem = new ChecklistItem(checklistItemString, false); 
 						StandardChecklist.getInstance(getApplicationContext()).addChecklistItem(newChecklistItem);
 						
 						refreshList();

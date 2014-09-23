@@ -7,9 +7,9 @@ public class ChecklistItem implements Serializable {
 	public String name;
 	public Boolean checked;
 	
-	public ChecklistItem(String theName) {
+	public ChecklistItem(String theName, Boolean checked) {
 		this.name = theName;
-		this.checked = false;
+		this.checked = checked;
 	}
 	
 	public String getName() {
@@ -26,7 +26,7 @@ public class ChecklistItem implements Serializable {
 	}
 
 	public void toggleChecked() {
-		this.checked = !this.checked;
+		this.checked ^= true;
 	}
 	
 }

@@ -22,6 +22,7 @@ public class StandardArrayAdapter extends ArrayAdapter<ChecklistItem> {
 	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+		
 		View itemView = convertView;
 		//if the view doesn't exist create it
 		if (itemView == null) {
