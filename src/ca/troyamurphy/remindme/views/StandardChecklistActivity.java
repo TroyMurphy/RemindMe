@@ -5,11 +5,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.text.Html;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView.MultiChoiceModeListener;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -23,6 +25,7 @@ import ca.troyamurphy.remindme.models.StandardChecklist;
 
 public class StandardChecklistActivity extends Activity {
 
+	private ListView standardListView;
 	private StandardArrayAdapter standardAdapter;
 	
 	@Override
@@ -30,11 +33,11 @@ public class StandardChecklistActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_standard_checklist);
 		
-		populateStandardList();
-		
 		populateStandardListView();
+		setMultiChoiceOnListView();
 		registerStandardClickCallback();
 	}
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,17 +64,56 @@ public class StandardChecklistActivity extends Activity {
 		this.refreshList();
 	}
 	
-	private void populateStandardList() {
-		// Will be replaced by add and remove buttons
-		// Can be used to force creation of new counter on Startup.
-	}
-	
 	private void populateStandardListView() {
 		this.standardAdapter = new StandardArrayAdapter(this);
 		
-		ListView standardList = (ListView) findViewById(R.id.standardListView);
-		standardList.setAdapter(this.standardAdapter);
+		this.standardListView = (ListView) findViewById(R.id.standardListView);
+		this.standardListView.setAdapter(this.standardAdapter);		
 	}
+
+	private void setMultiChoiceOnListView() {
+		this.standardListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+		this.standardListView.setMultiChoiceModeListener(new MultiChoiceModeListener() {
+			
+			@Override
+			public void onItemCheckedStateChanged(ActionMode mode, int position,
+					long id, boolean checked) {
+				
+			}
+			@Override
+			public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+				// TODO Auto-generated method stub
+				switch (item.getItemId()) {
+				case R.id.menu_email:
+					//call function to email
+					mode.finish();
+					return true;
+				default:
+					return false;
+				}
+			}
+			@Override
+			public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+				// TODO Auto-generated method stub
+				MenuInflater inflater = mode.getMenuInflater();
+				inflater.inflate(R.menu.standard_context_menu, menu);
+				return true;
+			}
+			
+			@Override
+			public void onDestroyActionMode(ActionMode mode) {
+			
+			}
+			
+			@Override
+			public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+		});
+	}
+	
 	
 	private void registerStandardClickCallback() {
 		ListView listview = (ListView) findViewById(R.id.standardListView); 
@@ -126,6 +168,9 @@ public class StandardChecklistActivity extends Activity {
 		dialog.show();
 		return true;
 	}
+	
+	
+	
 	private void refreshList() {
 		this.standardAdapter.notifyDataSetChanged();
 	}

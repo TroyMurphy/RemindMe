@@ -39,6 +39,7 @@ public final class R {
     }
     public static final class menu {
         public static final int standard_checklist=0x7f070000;
+        public static final int standard_context_menu=0x7f070001;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
