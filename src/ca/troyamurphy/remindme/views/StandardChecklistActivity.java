@@ -78,7 +78,9 @@ public class StandardChecklistActivity extends Activity {
 			@Override
 			public void onItemCheckedStateChanged(ActionMode mode, int position,
 					long id, boolean checked) {
-				
+				final int checkedCount = standardListView.getCheckedItemCount();
+				mode.setTitle(checkedCount + " Selected");
+				standardAdapter.toggleSelection(position);
 			}
 			@Override
 			public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
@@ -110,7 +112,7 @@ public class StandardChecklistActivity extends Activity {
 			
 			@Override
 			public void onDestroyActionMode(ActionMode mode) {
-			
+				standardAdapter.removeSelection();
 			}
 			
 			@Override

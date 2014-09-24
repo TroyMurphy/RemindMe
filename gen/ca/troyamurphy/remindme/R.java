@@ -31,9 +31,9 @@ public final class R {
     public static final class id {
         public static final int addChecklistItemAction=0x7f080005;
         public static final int addChecklistItemEditText=0x7f080000;
-        public static final int menu_archive=0x7f080007;
-        public static final int menu_delete=0x7f080008;
-        public static final int menu_email=0x7f080006;
+        public static final int menu_archive=0x7f080008;
+        public static final int menu_delete=0x7f080006;
+        public static final int menu_email=0x7f080007;
         public static final int standardListView=0x7f080002;
         public static final int standard_item_checked=0x7f080003;
         public static final int standard_item_name=0x7f080004;
