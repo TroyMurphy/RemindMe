@@ -88,6 +88,14 @@ public class StandardChecklistActivity extends Activity {
 					//call function to email
 					mode.finish();
 					return true;
+				case R.id.menu_archive:
+					//call function to archive
+					mode.finish();
+					return true;
+				case R.id.menu_delete:
+					//call function to delete
+					mode.finish();
+					return true;
 				default:
 					return false;
 				}
