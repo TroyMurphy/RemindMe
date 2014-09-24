@@ -12,7 +12,7 @@ import ca.troyamurphy.remindme.R;
 import ca.troyamurphy.remindme.views.StandardChecklistActivity;
 
 public class StandardArrayAdapter extends ArrayAdapter<ChecklistItem> {
-
+	LayoutInflater inflater;
 	private StandardChecklistActivity standardChecklistActivity;
 	private SparseBooleanArray mSelectedItemsIds;
 	
@@ -21,6 +21,7 @@ public class StandardArrayAdapter extends ArrayAdapter<ChecklistItem> {
 		super(standardChecklistActivity, R.layout.activity_standard_item, StandardChecklist.getInstance(standardChecklistActivity.getApplicationContext()).getStandardList());
 		mSelectedItemsIds = new SparseBooleanArray();
 		this.standardChecklistActivity = standardChecklistActivity;
+		inflater = LayoutInflater.from(standardChecklistActivity.getApplicationContext());
 	}
 	
 	@Override
@@ -30,7 +31,7 @@ public class StandardArrayAdapter extends ArrayAdapter<ChecklistItem> {
 		// the pointer to the object is saved as a tag so it can be pulled readily from the view
 		if (convertView == null) {
 			holder = new ViewHolder();
-			convertView = standardChecklistActivity.getLayoutInflater().inflate(R.layout.activity_standard_item, parent, false);
+			convertView = inflater.inflate(R.layout.activity_standard_item, parent, false);
 			holder.name = (TextView) convertView.findViewById(R.id.standard_item_name);
 			holder.checked = (CheckBox) convertView.findViewById(R.id.standard_item_checked);
 			convertView.setTag(holder);
@@ -69,5 +70,9 @@ public class StandardArrayAdapter extends ArrayAdapter<ChecklistItem> {
 	 }
 	public SparseBooleanArray getSelectedIds() {
 		return mSelectedItemsIds;
+	}
+	public void remove(ChecklistItem checklistItem) {
+		StandardChecklist.getInstance(getContext()).getStandardList().remove(checklistItem);
+		notifyDataSetChanged();
 	}
 }
