@@ -108,4 +108,16 @@ public class StandardChecklist {
 		}
 		return ret;
 	}
+	public int getChecked() {
+		int ret = 0;
+		for (int i=0; i<INSTANCE.getStandardList().size(); i++) {
+			if (INSTANCE.getChecklistItemAtIndex(i).checked) {
+				ret += 1;
+			}
+		}
+		return ret;
+	}
+	public int getUnchecked() {
+		return INSTANCE.getStandardList().size() - getChecked();
+	}
 }
