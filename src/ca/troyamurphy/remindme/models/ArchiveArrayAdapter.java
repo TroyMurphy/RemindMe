@@ -91,4 +91,11 @@ public class ArchiveArrayAdapter extends ArrayAdapter<ChecklistItem> {
 		 ArchiveChecklist.getInstance(getContext()).removeChecklistItem(checklistItem);
 		 notifyDataSetChanged();
 	}
+	public String getSelectedItemsAsString() {
+		String itemsString = "";
+		for (int i=0; i< mSelectedItemsIds.size(); i++) {
+			itemsString += mSelectedItemsIds.toString();
+		}
+		return itemsString;
+	}
 }

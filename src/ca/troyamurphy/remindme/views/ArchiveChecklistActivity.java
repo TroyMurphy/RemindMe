@@ -1,5 +1,9 @@
 package ca.troyamurphy.remindme.views;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.AbsListView.MultiChoiceModeListener;
 import android.widget.ListView;
+import android.widget.Toast;
 import ca.troyamurphy.remindme.R;
 import ca.troyamurphy.remindme.models.ArchiveArrayAdapter;
 
@@ -77,6 +82,10 @@ public class ArchiveChecklistActivity extends Activity {
 			public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
 				// TODO Auto-generated method stub
 				switch (item.getItemId()) {
+				case R.id.menu_email:
+					emailString(archiveAdapter.getSelectedItemsAsString());
+					mode.finish();
+					return true;
 				case R.id.menu_unarchive:
 					archiveAdapter.sendSelectedItemsToStandard();
 					mode.finish();
@@ -118,5 +127,22 @@ public class ArchiveChecklistActivity extends Activity {
 	
 	private void refreshList() {
 		this.archiveAdapter.notifyDataSetChanged();
+	}
+	@SuppressLint("SimpleDateFormat")
+	private void emailString(String itemsString) {
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		String dateString = "ToDo Items for " + sdf.format(Calendar.getInstance().getTime());
+				
+		Intent emailIntent = new Intent(Intent.ACTION_SEND);
+		emailIntent.setType("message/rfc822");
+		emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{});
+		emailIntent.putExtra(Intent.EXTRA_SUBJECT, dateString);
+		emailIntent.putExtra(Intent.EXTRA_TEXT, itemsString);
+		try {
+		    startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+		} catch (android.content.ActivityNotFoundException ex) {
+		    Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+		}
+
 	}
 }

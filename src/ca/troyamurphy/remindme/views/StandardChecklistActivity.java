@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 import ca.troyamurphy.remindme.R;
+import ca.troyamurphy.remindme.models.ArchiveChecklist;
 import ca.troyamurphy.remindme.models.ChecklistItem;
 import ca.troyamurphy.remindme.models.StandardArrayAdapter;
 import ca.troyamurphy.remindme.models.StandardChecklist;
@@ -178,6 +179,9 @@ public class StandardChecklistActivity extends Activity {
 		return true;
 	}
 	public boolean emailAllItems(MenuItem menuItem) {
+		String items = StandardChecklist.getInstance(this).toString();
+		items += ArchiveChecklist.getInstance(this).toString();
+		emailString(items);
 		return true;
 	}
 	
