@@ -179,7 +179,9 @@ public class StandardChecklistActivity extends Activity {
 		return true;
 	}
 	public boolean emailAllItems(MenuItem menuItem) {
-		String items = StandardChecklist.getInstance(this).toString();
+		String items = "ToDo Items: \n";
+		items += StandardChecklist.getInstance(this).toString();
+		items += "\n Archived Items: \n";
 		items += ArchiveChecklist.getInstance(this).toString();
 		emailString(items);
 		return true;
