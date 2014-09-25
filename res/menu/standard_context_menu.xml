@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-	<item
-        android:id="@+id/menu_delete"
-        android:icon="@drawable/ic_action_remove"
-        android:title="@string/action_delete"
-        android:showAsAction="always"
-        />
     
     <item
         android:id="@+id/menu_email"
         android:icon="@drawable/ic_action_email"
         android:title="@string/action_email"
-        android:showAsAction="always"
-        />
+        android:showAsAction="always"/>
     <item
         android:id="@+id/menu_archive"
         android:icon="@drawable/ic_action_archive"
         android:title="Send To Archive"
-        android:showAsAction="always"
-        />    
+        android:showAsAction="always"/>
+	<item
+        android:id="@+id/menu_delete"
+        android:icon="@drawable/ic_action_remove"
+        android:title="@string/action_delete"
+        android:showAsAction="always"/>    
 </menu>

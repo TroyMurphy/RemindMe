@@ -1,5 +1,11 @@
 package ca.troyamurphy.remindme.models;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
@@ -8,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 import ca.troyamurphy.remindme.R;
 import ca.troyamurphy.remindme.views.StandardChecklistActivity;
 
@@ -90,5 +97,14 @@ public class StandardArrayAdapter extends ArrayAdapter<ChecklistItem> {
 	 public void remove(ChecklistItem checklistItem) {
 		 StandardChecklist.getInstance(getContext()).removeChecklistItem(checklistItem);
 		 notifyDataSetChanged();
+	}
+
+	public String getSelectedItemsAsString() {
+		String itemsString = "";
+		for (int i=0; i< mSelectedItemsIds.size(); i++) {
+			itemsString += mSelectedItemsIds.toString();
+		}
+		return itemsString;
+
 	}
 }

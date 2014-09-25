@@ -100,5 +100,12 @@ public class StandardChecklist {
 			e.printStackTrace();
 		}
 	}
-	
+	@Override
+	public String toString() {
+		String ret = "";
+		for (int i=0; i<INSTANCE.getStandardList().size(); i++) {
+			ret += INSTANCE.getChecklistItemAtIndex(i).toString();
+		}
+		return ret;
+	}
 }

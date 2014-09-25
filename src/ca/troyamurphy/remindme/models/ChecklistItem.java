@@ -28,5 +28,14 @@ public class ChecklistItem implements Serializable {
 	public void toggleChecked() {
 		this.checked ^= true;
 	}
-	
+	@Override
+	public String toString() {
+		String ret = "";
+		if (this.checked) {
+			ret += "[X] ";
+		} else {
+			ret += "[ ] ";
+		}
+		return ret + this.name + "\n";
+	}
 }

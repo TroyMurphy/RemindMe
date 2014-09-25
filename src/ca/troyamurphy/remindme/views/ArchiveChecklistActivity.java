@@ -78,7 +78,7 @@ public class ArchiveChecklistActivity extends Activity {
 				// TODO Auto-generated method stub
 				switch (item.getItemId()) {
 				case R.id.menu_unarchive:
-					//call function to archive
+					archiveAdapter.sendSelectedItemsToStandard();
 					mode.finish();
 					return true;
 				case R.id.menu_delete:

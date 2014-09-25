@@ -3,13 +3,6 @@
     tools:context="ca.troyamurphy.remindme.StandardChecklistActivity" >
 
     <item 
-        android:id="@+id/addChecklistItemAction"
-        android:showAsAction="always"
-        android:title="Add Counter"
-        android:icon="@drawable/ic_action_new"
-        android:onClick="addChecklistItemAction"/>
-
-    <item 
         android:id="@+id/goToArchive"
         android:showAsAction="always"
         android:title="View Archive"
@@ -21,5 +14,11 @@
         android:title="Email All"
         android:icon="@drawable/ic_action_email"
         android:onClick="emailAllItems"/>
-
+    <item 
+        android:id="@+id/addChecklistItemAction"
+        android:showAsAction="always"
+        android:title="Add Counter"
+        android:icon="@drawable/ic_action_new"
+        android:onClick="addChecklistItemAction"/>
+    
 </menu>

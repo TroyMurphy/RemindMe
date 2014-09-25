@@ -75,6 +75,15 @@ public class ArchiveArrayAdapter extends ArrayAdapter<ChecklistItem> {
 			 }
 		 }
 	 }
+	 public void sendSelectedItemsToStandard() {
+		 for (int i = (mSelectedItemsIds.size() - 1); i>=0; i--) {
+			 if (mSelectedItemsIds.valueAt(i)) {
+				 ChecklistItem selectedItem = this.getItem(mSelectedItemsIds.keyAt(i));
+				 StandardChecklist.getInstance(getContext()).addChecklistItem((selectedItem));
+			 }
+		 }
+		 deleteSelectedItems();
+	 }
 	 public SparseBooleanArray getSelectedIds() {
 		 return mSelectedItemsIds;
 	 }

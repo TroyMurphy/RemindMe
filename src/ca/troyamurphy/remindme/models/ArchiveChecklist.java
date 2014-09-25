@@ -96,5 +96,12 @@ public class ArchiveChecklist {
 			e.printStackTrace();
 		}
 	}
-	
+	@Override
+	public String toString() {
+		String ret = "";
+		for (int i=0; i<INSTANCE.getArchiveList().size(); i++) {
+			ret += INSTANCE.getChecklistItemAtIndex(i).toString();
+		}
+		return ret;
+	}
 }

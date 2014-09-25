@@ -1,5 +1,8 @@
 package ca.troyamurphy.remindme.views;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -89,7 +92,7 @@ public class StandardChecklistActivity extends Activity {
 				// TODO Auto-generated method stub
 				switch (item.getItemId()) {
 				case R.id.menu_email:
-					//call function to email
+					emailString(standardAdapter.getSelectedItemsAsString());
 					mode.finish();
 					return true;
 				case R.id.menu_archive:
@@ -180,5 +183,23 @@ public class StandardChecklistActivity extends Activity {
 	
 	private void refreshList() {
 		this.standardAdapter.notifyDataSetChanged();
+	}
+	
+	@SuppressLint("SimpleDateFormat")
+	private void emailString(String itemsString) {
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		String dateString = "ToDo Items for " + sdf.format(Calendar.getInstance().getTime());
+				
+		Intent emailIntent = new Intent(Intent.ACTION_SEND);
+		emailIntent.setType("message/rfc822");
+		emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{});
+		emailIntent.putExtra(Intent.EXTRA_SUBJECT, dateString);
+		emailIntent.putExtra(Intent.EXTRA_TEXT, itemsString);
+		try {
+		    startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+		} catch (android.content.ActivityNotFoundException ex) {
+		    Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+		}
+
 	}
 }
