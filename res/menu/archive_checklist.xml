@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ca.troyamurphy.remindme.StandardChecklistActivity" >
+
+    <item 
+        android:id="@+id/goToStandard"
+        android:showAsAction="ifRoom"
+        android:title="Standard"
+        android:icon="@drawable/ic_action_back"
+        android:onClick="switchToStandardList"/>
+
+</menu>

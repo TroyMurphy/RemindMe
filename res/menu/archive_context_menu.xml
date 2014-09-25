@@ -6,17 +6,10 @@
         android:title="@string/action_delete"
         android:showAsAction="ifRoom"
         />
-    
     <item
-        android:id="@+id/menu_email"
-        android:icon="@drawable/ic_action_email"
-        android:title="@string/action_email"
-        android:showAsAction="ifRoom"
-        />
-    <item
-        android:id="@+id/menu_archive"
-        android:icon="@drawable/ic_action_archive"
-        android:title="Send To Archive"
+        android:id="@+id/menu_unarchive"
+        android:icon="@drawable/ic_action_unarchive"
+        android:title="Send To Standard"
         android:showAsAction="ifRoom"
         />    
 </menu>

@@ -3,7 +3,7 @@ package ca.troyamurphy.remindme.views;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.graphics.Paint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -13,10 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView.MultiChoiceModeListener;
 import android.widget.AdapterView;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 import ca.troyamurphy.remindme.R;
 import ca.troyamurphy.remindme.models.ChecklistItem;
@@ -68,7 +66,9 @@ public class StandardChecklistActivity extends Activity {
 		this.standardAdapter = new StandardArrayAdapter(this);
 		
 		this.standardListView = (ListView) findViewById(R.id.standardListView);
-		this.standardListView.setAdapter(this.standardAdapter);		
+		this.standardListView.setAdapter(this.standardAdapter);	
+		
+		this.standardListView.setSelector(R.drawable.state_selector);
 	}
 
 	private void setMultiChoiceOnListView() {
@@ -92,10 +92,11 @@ public class StandardChecklistActivity extends Activity {
 					return true;
 				case R.id.menu_archive:
 					//call function to archive
+					standardAdapter.sendSelectedItemsToArchive();
 					mode.finish();
 					return true;
 				case R.id.menu_delete:
-					//call function to delete
+					standardAdapter.deleteSelectedItems();
 					mode.finish();
 					return true;
 				default:
@@ -124,7 +125,6 @@ public class StandardChecklistActivity extends Activity {
 		});
 	}
 	
-	
 	private void registerStandardClickCallback() {
 		ListView listview = (ListView) findViewById(R.id.standardListView); 
 				
@@ -134,18 +134,7 @@ public class StandardChecklistActivity extends Activity {
 					int position, long id) {
 				//call on checklist so that it saves
 				StandardChecklist.getInstance(getApplicationContext()).toggleChecklistItemAtIndex(position);
-				
-				ChecklistItem selectedChecklistItem = StandardChecklist.getInstance(getApplicationContext()).getChecklistItemAtIndex(position);
-				
-				CheckBox checkbox = (CheckBox) findViewById(R.id.standard_item_checked);
-				checkbox.setChecked(selectedChecklistItem.getChecked());
-				
-				TextView titleTV = (TextView) findViewById(R.id.standard_item_name);
-				if (selectedChecklistItem.getChecked()) {
-					titleTV.setPaintFlags(titleTV.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-				} else {
-					titleTV.setPaintFlags(0);
-				}
+				refreshList();
 			}
 		});
 	}
@@ -179,7 +168,15 @@ public class StandardChecklistActivity extends Activity {
 		return true;
 	}
 	
-	
+	public boolean switchToArchiveList(MenuItem menuItem) {
+		Intent intent = new Intent(this, ArchiveChecklistActivity.class);
+		startActivity(intent);
+		
+		return true;
+	}
+	public boolean emailAllItems(MenuItem menuItem) {
+		return true;
+	}
 	
 	private void refreshList() {
 		this.standardAdapter.notifyDataSetChanged();

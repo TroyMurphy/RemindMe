@@ -9,17 +9,17 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import ca.troyamurphy.remindme.R;
-import ca.troyamurphy.remindme.views.StandardChecklistActivity;
+import ca.troyamurphy.remindme.views.ArchiveChecklistActivity;
 
-public class StandardArrayAdapter extends ArrayAdapter<ChecklistItem> {
+public class ArchiveArrayAdapter extends ArrayAdapter<ChecklistItem> {
 	LayoutInflater inflater;
 	private SparseBooleanArray mSelectedItemsIds;
 	
-	public StandardArrayAdapter(StandardChecklistActivity standardChecklistActivity) {
+	public ArchiveArrayAdapter(ArchiveChecklistActivity archiveChecklistActivity) {
 		//do not use getApplicationContext or else the listview will turn light and unreadable
-		super(standardChecklistActivity, R.layout.activity_item, StandardChecklist.getInstance(standardChecklistActivity).getStandardList());
+		super(archiveChecklistActivity, R.layout.activity_item, ArchiveChecklist.getInstance(archiveChecklistActivity).getArchiveList());
 		mSelectedItemsIds = new SparseBooleanArray();
-		inflater = LayoutInflater.from(standardChecklistActivity);
+		inflater = LayoutInflater.from(archiveChecklistActivity);
 	}
 	
 	@Override
@@ -36,7 +36,7 @@ public class StandardArrayAdapter extends ArrayAdapter<ChecklistItem> {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		ChecklistItem selectedChecklistItem = StandardChecklist.getInstance(getContext()).getChecklistItemAtIndex(position);
+		ChecklistItem selectedChecklistItem = ArchiveChecklist.getInstance(getContext()).getChecklistItemAtIndex(position);
 		holder.name.setText(selectedChecklistItem.getName());
 		// if done, strike the text
 		if (selectedChecklistItem.getChecked()) {
@@ -75,19 +75,11 @@ public class StandardArrayAdapter extends ArrayAdapter<ChecklistItem> {
 			 }
 		 }
 	 }
-	 public void sendSelectedItemsToArchive() {
-		 for (int i = (mSelectedItemsIds.size() - 1); i>=0; i--) {
-			 if (mSelectedItemsIds.valueAt(i)) {
-				 ChecklistItem selectedItem = this.getItem(mSelectedItemsIds.keyAt(i));
-				 ArchiveChecklist.getInstance(getContext()).addChecklistItem((selectedItem));
-			 }
-		 }
-	 }
 	 public SparseBooleanArray getSelectedIds() {
 		 return mSelectedItemsIds;
 	 }
 	 public void remove(ChecklistItem checklistItem) {
-		 StandardChecklist.getInstance(getContext()).removeChecklistItem(checklistItem);
+		 ArchiveChecklist.getInstance(getContext()).removeChecklistItem(checklistItem);
 		 notifyDataSetChanged();
 	}
 }

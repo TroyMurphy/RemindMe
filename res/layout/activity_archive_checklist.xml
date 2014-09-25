@@ -9,17 +9,17 @@
     tools:context="ca.troyamurphy.remindme.StandardChecklistActivity" >
 
     <TextView
-        android:id="@+id/standard_list_view_title"
+        android:id="@+id/archive_list_view_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ToDo List" />
+        android:text="Archive" />
 
     <ListView
-        android:id="@+id/standardListView"
+        android:id="@+id/archiveListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/standard_list_view_title" 
+        android:layout_below="@+id/archive_list_view_title" 
         android:choiceMode="multipleChoiceModal">
     </ListView>
 

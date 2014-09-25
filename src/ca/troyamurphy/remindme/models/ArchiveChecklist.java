@@ -11,62 +11,62 @@ import java.util.ArrayList;
 
 import android.content.Context;
 
-public class StandardChecklist {
+public class ArchiveChecklist {
 	//singleton design pattern uses INSTANCE as the singleton.
-	//access with StandardChecklist.getInstance(context) any time the checklist is required;
+	//access with ArchiveChecklist.getInstance(context) any time the checklist is required;
 	
-	private static StandardChecklist INSTANCE = null;
+	private static ArchiveChecklist INSTANCE = null;
 	
-	private static final String DATABASEFILE = "standardChecklist.save";
-	private ArrayList<ChecklistItem> standardArray;
+	private static final String DATABASEFILE = "archiveChecklist.save";
+	private ArrayList<ChecklistItem> archiveArray;
 	
 	private Context context;
 	
-	private StandardChecklist(Context context){
+	private ArchiveChecklist(Context context){
 		//prepare the new instance with the existing items
 		this.context = context;
 		this.load();
 	}
 	
-	public static StandardChecklist getInstance(Context context ) {
+	public static ArchiveChecklist getInstance(Context context ) {
 		// ALWAYS receives context though only used on first creation. Allows for saving and loading
 		if (INSTANCE == null) {
-			INSTANCE = new StandardChecklist(context);
+			INSTANCE = new ArchiveChecklist(context);
 		}
 		return INSTANCE;
 	}
 	
 	public void addChecklistItem(ChecklistItem theChecklistItem) {
-		INSTANCE.standardArray.add(theChecklistItem);	
+		INSTANCE.archiveArray.add(theChecklistItem);	
 		INSTANCE.save();
 	}
 	public void removeChecklistItemAtIndex(Integer index) {
-		INSTANCE.standardArray.remove(index);
+		INSTANCE.archiveArray.remove(index);
 		INSTANCE.save();
 	}
 	public void removeChecklistItem(ChecklistItem checklistItem) {
-		INSTANCE.standardArray.remove(checklistItem);
+		INSTANCE.archiveArray.remove(checklistItem);
 		INSTANCE.save();
 	}
 	
-	public ArrayList<ChecklistItem> getStandardList() {
-		return INSTANCE.standardArray;
+	public ArrayList<ChecklistItem> getArchiveList() {
+		return INSTANCE.archiveArray;
 	}
 	
 	public ChecklistItem getChecklistItemAtIndex(int index) {
-		return INSTANCE.standardArray.get(index);
+		return INSTANCE.archiveArray.get(index);
 	}
 	public Boolean toggleChecklistItemAtIndex(Integer index) {
-		INSTANCE.standardArray.get(index).toggleChecked();
+		INSTANCE.archiveArray.get(index).toggleChecked();
 		INSTANCE.save();
-		return INSTANCE.standardArray.get(index).getChecked();
+		return INSTANCE.archiveArray.get(index).getChecked();
 	}
 	
 	private void save() {
 		try {
-			FileOutputStream fileOut = context.openFileOutput(StandardChecklist.DATABASEFILE, Context.MODE_PRIVATE);
+			FileOutputStream fileOut = context.openFileOutput(ArchiveChecklist.DATABASEFILE, Context.MODE_PRIVATE);
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(INSTANCE.standardArray);
+			out.writeObject(INSTANCE.archiveArray);
 			out.close();
 			fileOut.close();
 		} catch (FileNotFoundException e) {
@@ -79,15 +79,15 @@ public class StandardChecklist {
 	@SuppressWarnings("unchecked")
 	private void load() {
 		try {
-			File fh = new File(context.getFilesDir(), StandardChecklist.DATABASEFILE);
+			File fh = new File(context.getFilesDir(), ArchiveChecklist.DATABASEFILE);
 			
 			if (!fh.exists()) {
-				this.standardArray = new ArrayList<ChecklistItem>();
+				this.archiveArray = new ArrayList<ChecklistItem>();
 				return;
 			}
-			FileInputStream fileIn = context.openFileInput(StandardChecklist.DATABASEFILE);
+			FileInputStream fileIn = context.openFileInput(ArchiveChecklist.DATABASEFILE);
 			ObjectInputStream in = new ObjectInputStream(fileIn);
-			this.standardArray = (ArrayList<ChecklistItem>) in.readObject();
+			this.archiveArray = (ArrayList<ChecklistItem>) in.readObject();
 			in.close();
 			fileIn.close();
 		} catch (FileNotFoundException e) {
