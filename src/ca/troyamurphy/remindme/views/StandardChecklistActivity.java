@@ -1,5 +1,6 @@
 package ca.troyamurphy.remindme.views;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -21,6 +22,7 @@ import ca.troyamurphy.remindme.models.ChecklistItem;
 import ca.troyamurphy.remindme.models.StandardArrayAdapter;
 import ca.troyamurphy.remindme.models.StandardChecklist;
 
+@SuppressLint("InflateParams")
 public class StandardChecklistActivity extends Activity {
 
 	private ListView standardListView;
@@ -30,7 +32,7 @@ public class StandardChecklistActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_standard_checklist);
-		
+		//make room for action icons		
 		populateStandardListView();
 		setMultiChoiceOnListView();
 		registerStandardClickCallback();
@@ -169,9 +171,7 @@ public class StandardChecklistActivity extends Activity {
 	}
 	
 	public boolean switchToArchiveList(MenuItem menuItem) {
-		Intent intent = new Intent(this, ArchiveChecklistActivity.class);
-		startActivity(intent);
-		
+		startActivity(new Intent(this, ArchiveChecklistActivity.class));
 		return true;
 	}
 	public boolean emailAllItems(MenuItem menuItem) {

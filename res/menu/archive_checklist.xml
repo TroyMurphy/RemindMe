@@ -4,8 +4,8 @@
 
     <item 
         android:id="@+id/goToStandard"
-        android:showAsAction="ifRoom"
-        android:title="Standard"
+        android:showAsAction="always"
+        android:title="View Standard"
         android:icon="@drawable/ic_action_back"
         android:onClick="switchToStandardList"/>
 

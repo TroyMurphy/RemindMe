@@ -112,9 +112,7 @@ public class ArchiveChecklistActivity extends Activity {
 	}
 	
 	public boolean switchToStandardList(MenuItem menuItem) {
-		Intent intent = new Intent(this, StandardChecklistActivity.class);
-		startActivity(intent);
-		
+		startActivity(new Intent(ArchiveChecklistActivity.this, StandardChecklistActivity.class));		
 		return true;
 	}
 	

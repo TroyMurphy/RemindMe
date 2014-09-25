@@ -4,10 +4,12 @@
     <string name="app_name">RemindMe</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-	<string name="action_email">Email</string>
-	<string name="action_archive">Archive</string>
-	<string name="action_unarchive">Unarchive</string>
-	<string name="action_delete">Delete</string>
-	
-	
+    <string name="action_email">Email</string>
+    <string name="action_archive">Archive</string>
+    <string name="action_unarchive">Unarchive</string>
+    <string name="action_delete">Delete</string>
+    
+    
+    <string name="title_activity_archive">MainActivity</string>
+
 </resources>

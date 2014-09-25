@@ -4,20 +4,20 @@
 
     <item 
         android:id="@+id/addChecklistItemAction"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="Add Counter"
         android:icon="@drawable/ic_action_new"
         android:onClick="addChecklistItemAction"/>
 
     <item 
         android:id="@+id/goToArchive"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="View Archive"
         android:icon="@drawable/ic_action_storage"
         android:onClick="switchToArchiveList"/>
     <item
         android:id="@+id/emailAllItems"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="Email All"
         android:icon="@drawable/ic_action_email"
         android:onClick="emailAllItems"/>

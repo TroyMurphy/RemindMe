@@ -82,6 +82,7 @@ public class StandardArrayAdapter extends ArrayAdapter<ChecklistItem> {
 				 ArchiveChecklist.getInstance(getContext()).addChecklistItem((selectedItem));
 			 }
 		 }
+		 deleteSelectedItems();
 	 }
 	 public SparseBooleanArray getSelectedIds() {
 		 return mSelectedItemsIds;

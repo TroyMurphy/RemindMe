@@ -4,19 +4,19 @@
         android:id="@+id/menu_delete"
         android:icon="@drawable/ic_action_remove"
         android:title="@string/action_delete"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         />
     
     <item
         android:id="@+id/menu_email"
         android:icon="@drawable/ic_action_email"
         android:title="@string/action_email"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         />
     <item
         android:id="@+id/menu_archive"
         android:icon="@drawable/ic_action_archive"
         android:title="Send To Archive"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         />    
 </menu>

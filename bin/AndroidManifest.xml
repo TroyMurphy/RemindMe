@@ -14,13 +14,17 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="ca.troyamurphy.remindme.views.StandardChecklistActivity"
+            android:name=".views.StandardChecklistActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.ArchiveChecklistActivity"
+            android:label="@string/title_activity_archive" >
         </activity>
     </application>
 

@@ -40,10 +40,6 @@ public class ArchiveChecklist {
 		INSTANCE.archiveArray.add(theChecklistItem);	
 		INSTANCE.save();
 	}
-	public void removeChecklistItemAtIndex(Integer index) {
-		INSTANCE.archiveArray.remove(index);
-		INSTANCE.save();
-	}
 	public void removeChecklistItem(ChecklistItem checklistItem) {
 		INSTANCE.archiveArray.remove(checklistItem);
 		INSTANCE.save();
