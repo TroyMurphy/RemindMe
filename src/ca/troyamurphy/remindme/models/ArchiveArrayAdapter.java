@@ -94,7 +94,7 @@ public class ArchiveArrayAdapter extends ArrayAdapter<ChecklistItem> {
 	public String getSelectedItemsAsString() {
 		String itemsString = "";
 		for (int i=0; i< mSelectedItemsIds.size(); i++) {
-			itemsString += mSelectedItemsIds.toString();
+			itemsString += this.getItem(mSelectedItemsIds.keyAt(i)).toString();
 		}
 		return itemsString;
 	}
