@@ -59,6 +59,7 @@ public final class R {
         public static final int menu_archive=0x7f080018;
         public static final int menu_delete=0x7f080013;
         public static final int menu_email=0x7f080012;
+        public static final int menu_standard=0x7f080019;
         public static final int menu_unarchive=0x7f080011;
         public static final int standardListView=0x7f080004;
     }

@@ -120,4 +120,7 @@ public class StandardChecklist {
 	public int getUnchecked() {
 		return INSTANCE.getStandardList().size() - getChecked();
 	}
+	public int getCount() {
+		return INSTANCE.getStandardList().size();
+	}
 }

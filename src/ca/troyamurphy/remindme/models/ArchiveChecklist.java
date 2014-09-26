@@ -104,4 +104,19 @@ public class ArchiveChecklist {
 		}
 		return ret;
 	}
+	public int getChecked() {
+		int ret = 0;
+		for (int i=0; i<INSTANCE.getArchiveList().size(); i++) {
+			if (INSTANCE.getChecklistItemAtIndex(i).checked) {
+				ret += 1;
+			}
+		}
+		return ret;
+	}
+	public int getUnchecked() {
+		return getCount() - getChecked();
+	}
+	public int getCount() {
+		return INSTANCE.getArchiveList().size();
+	}
 }

@@ -1,11 +1,13 @@
 package ca.troyamurphy.remindme.views;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import ca.troyamurphy.remindme.R;
+import ca.troyamurphy.remindme.models.ArchiveChecklist;
 import ca.troyamurphy.remindme.models.StandardChecklist;
 
 public class StatisticsActivity extends Activity {
@@ -40,8 +42,22 @@ public class StatisticsActivity extends Activity {
 		TextView todounchecked = (TextView) findViewById(R.id.ToDoUncheckedCount);
 		TextView archivecount = (TextView) findViewById(R.id.ArchivedCount);
 		TextView archivechecked = (TextView) findViewById(R.id.ArchivedCheckedCount);
-		TextView archivedunchecked = (TextView) findViewById(R.id.ArchivedUncheckedCount);
+		TextView archiveunchecked = (TextView) findViewById(R.id.ArchivedUncheckedCount);
 		
-		val_todochecked = StandardChecklist.getInstance(this).
+		int val_todochecked = StandardChecklist.getInstance(this).getChecked();
+		int val_todounchecked = StandardChecklist.getInstance(this).getUnchecked();
+		int val_archivecount = ArchiveChecklist.getInstance(this).getCount();
+		int val_archivechecked = ArchiveChecklist.getInstance(this).getChecked();
+		int val_archiveunchecked = ArchiveChecklist.getInstance(this).getUnchecked();
+		
+		todochecked.setText(""+val_todochecked);
+		todounchecked.setText(""+val_todounchecked);
+		archivecount.setText(""+val_archivecount);
+		archivechecked.setText(""+val_archivechecked);
+		todochecked.setText(""+val_archiveunchecked );		
+	}
+	public boolean switchToStandardList(MenuItem menuItem) {
+		startActivity(new Intent(this, StandardChecklistActivity.class));
+		return true;
 	}
 }
