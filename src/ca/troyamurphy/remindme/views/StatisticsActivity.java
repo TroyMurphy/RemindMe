@@ -38,18 +38,21 @@ public class StatisticsActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	private void updateStatistics() {
+		TextView todocount = (TextView) findViewById(R.id.ToDoCount);
 		TextView todochecked = (TextView) findViewById(R.id.ToDoCheckedCount);
 		TextView todounchecked = (TextView) findViewById(R.id.ToDoUncheckedCount);
 		TextView archivecount = (TextView) findViewById(R.id.ArchivedCount);
 		TextView archivechecked = (TextView) findViewById(R.id.ArchivedCheckedCount);
 		TextView archiveunchecked = (TextView) findViewById(R.id.ArchivedUncheckedCount);
 		
+		int val_todocount = StandardChecklist.getInstance(this).getCount();
 		int val_todochecked = StandardChecklist.getInstance(this).getChecked();
 		int val_todounchecked = StandardChecklist.getInstance(this).getUnchecked();
 		int val_archivecount = ArchiveChecklist.getInstance(this).getCount();
 		int val_archivechecked = ArchiveChecklist.getInstance(this).getChecked();
 		int val_archiveunchecked = ArchiveChecklist.getInstance(this).getUnchecked();
 
+		todocount.setText(""+val_todocount);
 		todochecked.setText(""+val_todochecked);
 		todounchecked.setText(""+val_todounchecked);
 		archivecount.setText(""+val_archivecount);

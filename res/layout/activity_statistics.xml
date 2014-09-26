@@ -3,7 +3,7 @@
     android:id="@+id/GridLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:columnCount="2"
+    android:columnCount="3"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -11,74 +11,137 @@
     tools:context="ca.troyamurphy.remindme.StatisticsActivity" >
 
     <TextView
-        android:id="@+id/ToDoChecked"
+        android:id="@+id/ToDoHeader"
+        android:layout_width="match_parent"
         android:layout_column="0"
+        android:layout_columnSpan="3"
         android:layout_row="0"
-        android:text="ToDoChecked"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:gravity="center_horizontal"
+        android:text="ToDo Summary:"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
+    
+    <TextView
+        android:id="@+id/ToDo"
+        android:layout_column="0"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="1"
+        android:text="Total"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
+        android:id="@+id/ToDoCount"
+        android:layout_column="2"
+        android:layout_row="1"
+        android:text="ToDoCount"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <TextView
+        android:id="@+id/ToDoChecked"
+        android:layout_column="0"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="2"
+        android:text="Checked"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <TextView
         android:id="@+id/ToDoCheckedCount"
-        android:layout_column="1"
-        android:layout_row="0"
+        android:layout_column="2"
+        android:layout_row="2"
         android:text="ToDoCheckedCount"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
     <TextView
         android:id="@+id/ToDoUnchecked"
         android:layout_column="0"
-        android:layout_row="1"
-        android:text="ToDoUnchecked"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
+        android:layout_row="3"
+        android:text="Unchecked"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
     <TextView
         android:id="@+id/ToDoUncheckedCount"
-        android:layout_column="1"
-        android:layout_row="1"
+        android:layout_column="2"
+        android:layout_row="3"
         android:text="ToDoUncheckedCount"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <TextView
+        android:id="@+id/ArchiveHeader"
+        android:layout_width="match_parent"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:layout_row="4"
+        android:gravity="center_horizontal"
+        android:paddingTop="30sp"
+        android:text="Archive Summary:"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
+    
     <TextView
         android:id="@+id/Archived"
         android:layout_column="0"
         android:layout_gravity="left|top"
-        android:layout_row="2"
-        android:text="Archived"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
+        android:layout_row="5"
+        android:text="Total"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
     <TextView
         android:id="@+id/ArchivedCount"
-        android:layout_column="1"
+        android:layout_column="2"
         android:layout_gravity="left|top"
-        android:layout_row="2"
+        android:layout_row="5"
         android:text="ArchivedCount"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+	
 	<TextView
         android:id="@+id/ArchivedChecked"
         android:layout_column="0"
-        android:layout_row="3"
-        android:text="ArchivedChecked"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
+        android:layout_row="6"
+        android:text="Checked"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
     <TextView
         android:id="@+id/ArchivedCheckedCount"
-        android:layout_column="1"
+        android:layout_row="6"
+        android:layout_column="2"
         android:layout_gravity="left|top"
-        android:layout_row="3"
         android:text="ArchivedCheckedCount"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
    	<TextView
         android:id="@+id/ArchivedUnchecked"
         android:layout_column="0"
         android:layout_gravity="left|top"
-        android:layout_row="4"
-        android:text="ArchivedUnchecked"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
+        android:layout_row="7"
+        android:text="Unchecked"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
     <TextView
         android:id="@+id/ArchivedUncheckedCount"
-        android:layout_column="1"
+        android:layout_column="2"
         android:layout_gravity="left|top"
-        android:layout_row="4"
+        android:layout_row="7"
         android:text="ArchivedUncheckedCount"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView 
+        android:layout_row="1"
+        android:layout_column="1"
+        android:text=".................."/>
+    <TextView 
+        android:layout_row="2"
+        android:layout_column="1"
+        android:text=".................."/>
+	<TextView
+	    android:layout_row="3"
+        android:layout_column="1"
+        android:text=".................."/>
+	<TextView
+	    android:layout_row="5"
+        android:layout_column="1"
+        android:text=".................."/>
+	<TextView         
+        android:layout_row="6"
+        android:layout_column="1"
+        android:text=".................."/>
+	<TextView 
+        android:layout_row="7"
+        android:layout_column="1"
+        android:text=".................."/>
+        
 </GridLayout>
