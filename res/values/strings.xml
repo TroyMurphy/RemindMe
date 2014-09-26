@@ -11,5 +11,5 @@
     <string name="title_activity_standard">ToDo</string>
     <string name="title_activity_archive">Archive</string>
     <string name="title_activity_statistics">Summary</string>
-
+	<string name="dots">........................................</string>
 </resources>
