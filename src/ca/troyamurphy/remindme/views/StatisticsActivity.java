@@ -49,13 +49,12 @@ public class StatisticsActivity extends Activity {
 		int val_archivecount = ArchiveChecklist.getInstance(this).getCount();
 		int val_archivechecked = ArchiveChecklist.getInstance(this).getChecked();
 		int val_archiveunchecked = ArchiveChecklist.getInstance(this).getUnchecked();
-		/*
+
 		todochecked.setText(""+val_todochecked);
 		todounchecked.setText(""+val_todounchecked);
 		archivecount.setText(""+val_archivecount);
 		archivechecked.setText(""+val_archivechecked);
 		archiveunchecked.setText(""+val_archiveunchecked );		
-		*/
 	}
 	
 	public boolean switchToStandardList(MenuItem menuItem) {
