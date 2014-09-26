@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -36,7 +37,9 @@ public class StandardChecklistActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_standard_checklist);
-		//make room for action icons		
+		//make room for action icons
+		getActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+		
 		populateStandardListView();
 		setMultiChoiceOnListView();
 		registerStandardClickCallback();
@@ -176,6 +179,10 @@ public class StandardChecklistActivity extends Activity {
 	
 	public boolean switchToArchiveList(MenuItem menuItem) {
 		startActivity(new Intent(this, ArchiveChecklistActivity.class));
+		return true;
+	}
+	public boolean switchToSummary(MenuItem menuItem) {
+		startActivity(new Intent(this, StatisticsActivity.class));
 		return true;
 	}
 	public boolean emailAllItems(MenuItem menuItem) {

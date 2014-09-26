@@ -1,7 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ca.troyamurphy.remindme.StandardChecklistActivity" >
-
+    <item
+        android:id="@+id/goToSummary"
+        android:showAsAction="always"
+        android:title="View Summary"
+        android:icon="@drawable/ic_action_view_as_list"
+        android:onClick="switchToSummary"/>
     <item 
         android:id="@+id/goToArchive"
         android:showAsAction="always"
@@ -20,5 +25,5 @@
         android:title="Add Counter"
         android:icon="@drawable/ic_action_new"
         android:onClick="addChecklistItemAction"/>
-    
+
 </menu>

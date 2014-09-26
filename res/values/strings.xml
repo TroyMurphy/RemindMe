@@ -8,8 +8,8 @@
     <string name="action_archive">Archive</string>
     <string name="action_unarchive">Unarchive</string>
     <string name="action_delete">Delete</string>
-    <string name="title_activity_standard">ToDo List</string>
+    <string name="title_activity_standard">ToDo</string>
     <string name="title_activity_archive">Archive</string>
-    <string name="title_activity_statistics">StatisticsActivity</string>
+    <string name="title_activity_statistics">Summary</string>
 
 </resources>

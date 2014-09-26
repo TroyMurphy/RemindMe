@@ -31,9 +31,10 @@ public final class R {
         public static final int ic_action_send_now=0x7f020006;
         public static final int ic_action_storage=0x7f020007;
         public static final int ic_action_unarchive=0x7f020008;
-        public static final int ic_launcher=0x7f020009;
-        public static final int listitem_background=0x7f02000a;
-        public static final int state_selector=0x7f02000b;
+        public static final int ic_action_view_as_list=0x7f020009;
+        public static final int ic_launcher=0x7f02000a;
+        public static final int listitem_background=0x7f02000b;
+        public static final int state_selector=0x7f02000c;
     }
     public static final class id {
         public static final int Archived=0x7f08000a;
@@ -54,12 +55,13 @@ public final class R {
         public static final int emailAllItems=0x7f080016;
         public static final int goToArchive=0x7f080015;
         public static final int goToStandard=0x7f080010;
+        public static final int goToSummary=0x7f080018;
         public static final int item_checked=0x7f080002;
         public static final int item_name=0x7f080003;
-        public static final int menu_archive=0x7f080018;
+        public static final int menu_archive=0x7f080019;
         public static final int menu_delete=0x7f080013;
         public static final int menu_email=0x7f080012;
-        public static final int menu_standard=0x7f080019;
+        public static final int menu_standard=0x7f08001a;
         public static final int menu_unarchive=0x7f080011;
         public static final int standardListView=0x7f080004;
     }

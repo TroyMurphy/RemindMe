@@ -6,6 +6,7 @@ import java.util.Calendar;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.ActionMode;
 import android.view.Menu;
@@ -30,6 +31,10 @@ public class ArchiveChecklistActivity extends Activity {
 		populateArchiveListView();
 		setMultiChoiceOnListView();
 		//registerArchiveClickCallback() not an option since archived options cannot be toggled. only viewed
+
+		//remove the icon
+		getActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+
 	}
 
 
