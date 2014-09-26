@@ -31,10 +31,10 @@ public class StatisticsActivity extends Activity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
+		//int id = item.getItemId();
+		//if (id == R.id.action_settings) {
+		//	return true;
+		//}
 		return super.onOptionsItemSelected(item);
 	}
 	private void updateStatistics() {
@@ -49,13 +49,15 @@ public class StatisticsActivity extends Activity {
 		int val_archivecount = ArchiveChecklist.getInstance(this).getCount();
 		int val_archivechecked = ArchiveChecklist.getInstance(this).getChecked();
 		int val_archiveunchecked = ArchiveChecklist.getInstance(this).getUnchecked();
-		
+		/*
 		todochecked.setText(""+val_todochecked);
 		todounchecked.setText(""+val_todounchecked);
 		archivecount.setText(""+val_archivecount);
 		archivechecked.setText(""+val_archivechecked);
-		todochecked.setText(""+val_archiveunchecked );		
+		archiveunchecked.setText(""+val_archiveunchecked );		
+		*/
 	}
+	
 	public boolean switchToStandardList(MenuItem menuItem) {
 		startActivity(new Intent(this, StandardChecklistActivity.class));
 		return true;

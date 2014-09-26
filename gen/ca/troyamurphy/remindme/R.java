@@ -49,13 +49,13 @@ public final class R {
         public static final int ToDoUnchecked=0x7f080008;
         public static final int ToDoUncheckedCount=0x7f080009;
         public static final int action_settings=0x7f080014;
-        public static final int addChecklistItemAction=0x7f080017;
+        public static final int addChecklistItemAction=0x7f080018;
         public static final int addChecklistItemEditText=0x7f080000;
         public static final int archiveListView=0x7f080001;
-        public static final int emailAllItems=0x7f080016;
-        public static final int goToArchive=0x7f080015;
+        public static final int emailAllItems=0x7f080017;
+        public static final int goToArchive=0x7f080016;
         public static final int goToStandard=0x7f080010;
-        public static final int goToSummary=0x7f080018;
+        public static final int goToSummary=0x7f080015;
         public static final int item_checked=0x7f080002;
         public static final int item_name=0x7f080003;
         public static final int menu_archive=0x7f080019;

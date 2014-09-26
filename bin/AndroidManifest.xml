@@ -27,7 +27,7 @@
             android:label="@string/title_activity_archive" >
         </activity>
         <activity
-            android:name=".StatisticsActivity"
+            android:name=".views.StatisticsActivity"
             android:label="@string/title_activity_statistics"
             android:parentActivityName=".views.StandardChecklistActivity" >
             <meta-data
